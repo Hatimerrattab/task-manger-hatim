@@ -1,0 +1,26 @@
+{
+    "development": {
+      "username": "postgres",
+      "password": "postgres",
+      "database": "errattab",
+      "host": "51.91.220.187",
+      "port": 32892,
+      "dialect": "postgres"
+    },
+    "test": {
+      "username": "postgres",
+      "password": "postgres",
+      "database": "errattab_test",
+      "host": "51.91.220.187",
+      "port": 32892,
+      "dialect": "postgres"
+    },
+    "production": {
+      "username": "postgres",
+      "password": "postgres",
+      "database": "errattab_prod",
+      "host": "51.91.220.187",
+      "port": 32892,
+      "dialect": "postgres"
+    }
+  }

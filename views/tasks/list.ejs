@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Tasks</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <div class="container mx-auto p-4">
+    <h1 class="text-3xl font-bold text-center text-blue-600 mb-8">All Tasks</h1>
+    <a href="/tasks/create" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Create a New Task</a>
+    <div class="mt-6 space-y-4">
+      <% tasks.forEach(task => { %>
+        <div class="bg-white shadow-md rounded-lg p-6">
+          <h2 class="text-xl font-semibold text-gray-800"><%= task.title %></h2>
+          <p class="text-gray-600"><%= task.description %></p>
+          <p class="text-gray-500">Category: <%= task.category %></p>
+          <p class="text-gray-500">Completed: <%= task.isCompleted ? "Yes" : "No" %></p>
+          <div class="mt-4 space-x-4">
+            <a href="/tasks/<%= task.id %>/edit" class="bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-600">Edit</a>
+            <form action="/tasks/<%= task.id %>/delete" method="POST" class="inline">
+              <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">Delete</button>
+            </form>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</body>
+</html>

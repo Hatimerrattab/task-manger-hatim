@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create a Task</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <div class="container mx-auto p-4">
+    <h1 class="text-3xl font-bold text-center text-blue-600 mb-8">Create a Task</h1>
+    <div class="bg-white shadow-md rounded-lg p-6">
+      <form action="/tasks" method="POST">
+        <div class="mb-4">
+          <label for="title" class="block text-gray-700">Title:</label>
+          <input type="text" id="title" name="title" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required minlength="3" maxlength="100" value="<%= locals.title || '' %>">
+          <% if (locals.errors && locals.errors.title) { %>
+            <p class="text-sm text-red-500"><%= locals.errors.title.msg %></p>
+          <% } %>
+        </div>
+        <div class="mb-4">
+          <label for="description" class="block text-gray-700">Description:</label>
+          <textarea id="description" name="description" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required minlength="10" maxlength="500"><%= locals.description || '' %></textarea>
+          <% if (locals.errors && locals.errors.description) { %>
+            <p class="text-sm text-red-500"><%= locals.errors.description.msg %></p>
+          <% } %>
+        </div>
+        <div class="mb-4">
+          <label for="category" class="block text-gray-700">Category:</label>
+          <input type="text" id="category" name="category" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required minlength="3" maxlength="50" value="<%= locals.category || '' %>">
+          <% if (locals.errors && locals.errors.category) { %>
+            <p class="text-sm text-red-500"><%= locals.errors.category.msg %></p>
+          <% } %>
+        </div>
+        <div class="flex justify-end space-x-4">
+          <a href="/tasks" class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">Cancel</a>
+          <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Create Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
